@@ -7,12 +7,27 @@ using namespace std;
 
 class drob {
 
-private: //private protected
+private: //private, protected, public
 
 	int x;
 	int y;
 
 public:
+	//конструктор по умолчанию
+	drob() {
+		x = 0;
+		y = 1;
+	}
+
+	//конструктор с параметром
+	drob(int a, int b) {
+		x = a;
+		setY(b);
+	}
+	drob(int a) {
+		x = a;
+		y = 1;
+	}
 
 	//setter - модификатор
 	void setX(int a) {
@@ -20,117 +35,38 @@ public:
 	}
 
 	void setY(int b) {
-		(b != 0)? y = b: y = 1;
+		(b != 0) ? y = b : y = 1;
 	}
-	
+
 	//getter - получатель
 	int getX() {
 		return x;
 	}
 
 	void print() {
-		cout  << x << " / " << y << " = " << (double)x / y;
+		cout << x << " / " << y << " = " << (double)x / y;
+	}
+
+	//деструктор может быть всегда один
+	~drob() {
+
 	}
 };
 
-class _time {
 
-private:
+void main() {	
 
-	int h=0,m=0,s=0;
-
-public:
-
-	void setTime(int H, int M, int S) {
-		h = H;
-		m = M;
-		s = S;
-	}
-
-	void btnH() {
-		(h == 23) ? h = 0 :	h++;
-	}
+	/*drob drb(3,2);
+	drob d1(14);
 	
-	void btnM() {
-		if (m == 59) {
-			m = 0;
-			btnH();
-
-		}
-		else 
-			m++;
-		
-	}
-
-	void btnS() {
-		if (s == 59) {
-			s = 0;
-			btnM();
-		}
-		else
-			s++;
-	}
-
-	void print() {
-		if (h > 23 || h < 0 ) h = 0;
-		if (m > 59 || m < 0 ) m = 0;
-		if (s > 59 || s < 0 ) s = 0;
-
-		if (h < 10) cout << "0";
-		cout << h << ":";
-
-		if (m < 10) cout << "0";
-		cout << m << ":";
-			
-		if (s < 10) cout << "0";
-		cout << s << endl;
-	}
-
-};
-
-
-void main() {
-	int n;
-	_time T;
-
-	T.setTime(23, 59, 40);
-	T.print();
-
+	d1.print();
 	
-	while (true)
-	{
-		
-		/*cout << "1 - h\n2 - m\n3 - s: ";
-		cin >> n;
-
-		switch (n)
-		{
-		case 1: T.btnH();
-			break;
-		case 2: T.btnM();
-			break;
-		case 3: T.btnS();
-			break;
-		}*/
-		system("cls");
-		T.print();
-		T.btnS();
-		Sleep(1000);
-	}
-
-	
-
-	
-
-	/*drob drb;
-	
-	drb.setX(3);
-
-	if (drb.getX() == 3) drb.setX(4);
-
-	drb.setY(5);
 	drb.print();*/
+	//drb.setX(3);
 
+	//if (drb.getX() == 3) drb.setX(4);
 
+	//drb.setY(5);
+	cout << endl;
 	system("pause");
 }
