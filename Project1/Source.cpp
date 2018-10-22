@@ -39,12 +39,53 @@ public:
 	}
 
 	//getter - получатель
-	int getX() {
+	int getX() const{
 		return x;
+	}
+
+	int getY() const {
+		return y;
 	}
 
 	void print() {
 		cout << x << " / " << y << " = " << (double)x / y;
+	}
+
+	drob operator+=(const drob d) {
+		
+		this->x = this->x*d.y + this->y*d.x;
+		this->y *= d.y;
+		return *this;
+	}
+
+	drob operator-=(const drob d) {
+
+		this->x = this->x*d.y - this->y*d.x;
+		this->y *= d.y;
+		return *this;
+
+	}
+
+	drob operator*=(const drob d) {
+
+		this->x *= d.x;
+		this->y *= d.y;
+		return *this;
+
+	}
+
+	drob operator/=(const drob &d) {
+		this->x *= d.y;
+		this->y *= d.x;
+		return *this;
+
+	}
+
+	drob operator+(const drob &d) {
+		drob res(this->x, this->y);
+		res += d;
+		return *this;
+
 	}
 
 	//деструктор может быть всегда один
@@ -56,6 +97,15 @@ public:
 
 void main() {	
 
+	drob a(1, 2);
+	drob b(5, 2);
+	drob c(5, 2);
+
+	//a.plus(b);
+	a += b += c;
+	
+	a.print();
+	
 	/*drob drb(3,2);
 	drob d1(14);
 	
